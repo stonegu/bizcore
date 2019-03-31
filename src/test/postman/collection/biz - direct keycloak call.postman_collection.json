@@ -1,0 +1,181 @@
+{
+	"info": {
+		"_postman_id": "28e3d5a5-ffc8-4dac-9604-78f3ed75ce37",
+		"name": "biz - direct keycloak call",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "client access token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "21a49f97-6f77-4ced-89fa-24950e79a59a",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"token\", jsonData.access_token);",
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic TU9CSUxFOjJmMWFmNmY4LTAzYWMtNDdlZi1iNzgxLTVmY2E4ZDQwMzI1ZQ=="
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://{{keycloakHost}}:{{keycloakPort}}/auth/realms/BIZ/protocol/openid-connect/token",
+					"protocol": "http",
+					"host": [
+						"{{keycloakHost}}"
+					],
+					"port": "{{keycloakPort}}",
+					"path": [
+						"auth",
+						"realms",
+						"BIZ",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f9403aec-0b78-4cbf-bb41-9a42295922c0",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"token\", jsonData.access_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic TU9CSUxFOjJmMWFmNmY4LTAzYWMtNDdlZi1iNzgxLTVmY2E4ZDQwMzI1ZQ=="
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "test1",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Testuser1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://{{keycloakHost}}:{{keycloakPort}}/auth/realms/BIZ/protocol/openid-connect/token",
+					"protocol": "http",
+					"host": [
+						"{{keycloakHost}}"
+					],
+					"port": "{{keycloakPort}}",
+					"path": [
+						"auth",
+						"realms",
+						"BIZ",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				},
+				"description": "login"
+			},
+			"response": []
+		},
+		{
+			"name": "get users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9b3f7409-f178-4740-a59d-f890538f3d68",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"var array = [];",
+							"jsonData.forEach(",
+							"    function(element) {",
+							"        array.push({'userId': element.id, 'contactid': element.username});",
+							"    }",
+							")",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{keycloakHost}}:{{keycloakPort}}/auth/admin/realms/BIZ/users",
+					"protocol": "http",
+					"host": [
+						"{{keycloakHost}}"
+					],
+					"port": "{{keycloakPort}}",
+					"path": [
+						"auth",
+						"admin",
+						"realms",
+						"BIZ",
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

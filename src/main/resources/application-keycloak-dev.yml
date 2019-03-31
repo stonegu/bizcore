@@ -1,0 +1,9 @@
+keycloak:
+   realm: BIZ
+   auth-server-url: http://localhost:8081/auth
+   ssl-required: none
+   resource: MOBILE
+   verify-token-audience: true
+   credentials:
+      secret: 2f1af6f8-03ac-47ef-b781-5fca8d40325e
+   confidential-port: 0

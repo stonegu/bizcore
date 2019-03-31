@@ -1,0 +1,28 @@
+# hibernate.ddl-auto
+#   the value is none, create, create-drop, validate, update
+#   The update operation for example will attempt to add new columns, constraints, etc but will never remove a column or constraint that may have existed previously. In development, it's often common to see developers use update to automatically modify the schema to add new additions upon restart.
+#   Typically in test case scenarios, you'll likely use create-drop so that you create your schema, your test case adds some mock data, you run your tests, and then during the test case cleanup, the schema objects are dropped, leaving an empty database.
+#   In production, it's often highly recommended you use none or simply don't specify this property.
+spring:
+   datasource:
+      url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+      platform: h2
+      username: sa
+      password:
+      driverClassName: org.h2.Driver
+   h2:
+      console:
+         enabled: true
+         path: /h2
+         settings:
+            trace: false
+            web-allow-others: false
+   jpa:
+      database-platform: org.hibernate.dialect.H2Dialect
+      hibernate:
+         ddl-auto: create-drop
+      properties:
+         hibernate:
+            show_sql: true
+            use_sql_comments: true
+            format_sql: true

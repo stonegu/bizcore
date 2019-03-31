@@ -1,0 +1,8 @@
+type KeycloakToken {
+   accessToken: String!
+   refreshToken: String
+}
+
+type Query {
+   keycloakAuthentication(username: String!, password: String!, realm: String!, client: String!): KeycloakToken
+}

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+   <!-- stop logback status INFO -->
+   <statusListener class="ch.qos.logback.core.status.NopStatusListener" />
+   
+   <springProperty scope="context" name="LOG_FILE" source="logging.file" defaultValue="C:/Projects/bizMobile/logs/default.log"/>   
+   <springProperty scope="context" name="LOG_FILE_ARCHIVED" source="logging.archived" defaultValue="C:/Projects/bizMobile/logs/archived/default-%d{yyyy-MM-dd}.%i.log"/>   
+   
+   <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+      <layout class="ch.qos.logback.classic.PatternLayout">
+         <Pattern>
+            %d{ISO8601} [%thread] %-5level %logger{36} - %msg%n
+         </Pattern>
+      </layout>
+   </appender>
+   
+   <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+      <file>${LOG_FILE}</file>
+      <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+         <!-- daily rollover -->
+         <fileNamePattern>${LOG_FILE_ARCHIVED}</fileNamePattern>
+         <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+            <maxFileSize>10MB</maxFileSize>
+         </timeBasedFileNamingAndTriggeringPolicy>
+         <!-- keep 30 days' worth of history capped at 3GB total size -->
+         <maxHistory>30</maxHistory>
+         <totalSizeCap>1GB</totalSizeCap>
+      </rollingPolicy>
+      <layout class="ch.qos.logback.classic.PatternLayout">
+         <Pattern>
+            %d{ISO8601} [%thread] %-5level %logger{36} - %msg%n
+         </Pattern>
+      </layout>
+   </appender>
+
+   <!-- Logging level can be one of one of TRACE, DEBUG, INFO, WARN, ERROR, FATAL, OFF. -->
+
+   <logger name="org.springframework.jdbc" level="INFO" additivity="false">
+      <appender-ref ref="STDOUT"/>
+      <appender-ref ref="FILE"/>
+   </logger>
+
+   <logger name="com.bizislife.core.graphql" level="WARN" additivity="false">
+      <appender-ref ref="STDOUT"/>
+      <appender-ref ref="FILE"/>
+   </logger>
+
+   <root level="DEBUG">
+      <appender-ref ref="STDOUT"/>
+      <appender-ref ref="FILE"/>
+   </root>
+
+</configuration>

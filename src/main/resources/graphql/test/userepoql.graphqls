@@ -1,0 +1,15 @@
+# example from : https://www.javadevjournal.com/spring-boot/spring-boot-graphql/
+type User {
+	login: String!,
+	id: ID!,
+	name: String
+}
+
+extend type Query {
+	users(first:ID, last: ID): [User]
+	user(id: ID!): User
+}
+
+extend type Mutation {
+	createUser(login: String!, name: String!): User
+}

@@ -1,0 +1,37 @@
+{
+	"info": {
+		"_postman_id": "4539c1be-83ef-40bd-8ab5-7f1d7731eb9b",
+		"name": "biz - graphql - find",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "find all books",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"query\": \"{ findAllBooks { id, title, author { id, firstName, lastName } } }\"}"
+				},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/graphql",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

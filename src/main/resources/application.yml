@@ -1,0 +1,37 @@
+project:
+   name: ${project.name}
+   description: ${project.description}
+   version: ${project.version}
+spring:
+   profiles:
+      active: dev
+server:
+#   contextPath: /graphql
+   port: 8080
+clientHttp:
+   timeout: 5000
+---
+spring.profiles: default
+spring:
+   profiles:
+      include: jdbc,keycloak
+logging:
+   file: C:/Projects/bizMobile/logs/graphql_default.log
+   archived: C:/Projects/bizMobile/logs/archived/graphql_default-%d{yyyy-MM-dd}.%i.log
+---
+spring.profiles: dev
+spring:
+   profiles:
+      include: jdbc-dev,keycloak-dev
+logging:
+   file: C:/Projects/bizMobile/logs/graphql_dev.log
+   archived: C:/Projects/bizMobile/logs/archived/graphql_dev-%d{yyyy-MM-dd}.%i.log
+---
+spring.profiles: qa
+spring:
+   profiles:
+      include: jdbc-qa,keycloak-qa
+logging:
+   file: C:/Projects/bizMobile/logs/graphql_qa.log
+   archived: C:/Projects/bizMobile/logs/archived/graphql_qa-%d{yyyy-MM-dd}.%i.log
+   
