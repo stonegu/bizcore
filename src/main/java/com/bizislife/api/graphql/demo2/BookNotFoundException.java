@@ -28,6 +28,6 @@ public class BookNotFoundException extends RuntimeException implements GraphQLEr
 
     @Override
     public ErrorType getErrorType() {
-        return ErrorType.DataFetchingException;
+        return ErrorType.ExecutionAborted;
     }
 }

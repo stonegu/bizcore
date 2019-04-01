@@ -10,7 +10,7 @@ public class Mutation implements GraphQLMutationResolver{
     @Autowired
     private UserService userService;
 
-    public User createUser(String login, String name) {
+    public TestUser createUser(String login, String name) {
         return this.userService.newUser(login, name);
     }
 

@@ -13,7 +13,7 @@ public class Query implements GraphQLQueryResolver {
     private BookRepository bookRepository;
     private AuthorRepository authorRepository;
 
-    public Iterable<Book> findAllBooks() {
+    public Iterable<TestBook> findAllBooks() {
         return bookRepository.findAll();
     }
 
@@ -21,8 +21,8 @@ public class Query implements GraphQLQueryResolver {
         return bookRepository.count();
     }
     
-    public Book findBook(long id) {
-    	Optional<Book> bookOpt = bookRepository.findById(id);
+    public TestBook findBook(long id) {
+    	Optional<TestBook> bookOpt = bookRepository.findById(id);
     	if (bookOpt.isPresent()) {
     		return bookOpt.get();
     	} else {
@@ -30,7 +30,7 @@ public class Query implements GraphQLQueryResolver {
     	}
     }
 
-    public Iterable<Author> findAllAuthors() {
+    public Iterable<TestAuthor> findAllAuthors() {
         return authorRepository.findAll();
     }
 

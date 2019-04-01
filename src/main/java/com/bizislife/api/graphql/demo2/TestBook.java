@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Setter
 @ToString
 @Entity
-public class Book {
+public class TestBook {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -21,9 +21,9 @@ public class Book {
     private int pageCount;
     @ManyToOne
     @JoinColumn(name = "author_id", nullable = false, updatable = false)
-    private Author author;
+    private TestAuthor author;
 
-    public Book(String title, String isbn, int pageCount, Author author) {
+    public TestBook(String title, String isbn, int pageCount, TestAuthor author) {
         this.title = title;
         this.isbn = isbn;
         this.pageCount = pageCount;
@@ -33,9 +33,9 @@ public class Book {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Book)) return false;
+        if (!(o instanceof TestBook)) return false;
 
-        Book book = (Book) o;
+        TestBook book = (TestBook) o;
 
         return id != null ? id.equals(book.id) : book.id == null;
     }

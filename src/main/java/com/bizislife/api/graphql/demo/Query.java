@@ -12,7 +12,7 @@ public class Query implements GraphQLQueryResolver{
     @Autowired
     private UserService userService;
 
-    public List<User> getUsers(int first, int last) {
+    public List<TestUser> getUsers(int first, int last) {
         System.out.println("Query: [" + first + "] to [" + last + "]");
         if (first == 0 && last == 0) {
             return this.userService.getAllUsers();
@@ -21,7 +21,7 @@ public class Query implements GraphQLQueryResolver{
         }
     }
 
-    public Optional<User> getUser(int id) {
+    public Optional<TestUser> getUser(int id) {
         return this.userService.getUser(id);
     }
 

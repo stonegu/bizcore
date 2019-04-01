@@ -1,0 +1,10 @@
+type Company {
+    id: ID
+    realmid: String!
+    prefername: String!
+    registname: String
+}
+
+type Mutation {
+    newCompany(realm: String!, prefername: String!) : Company!
+}

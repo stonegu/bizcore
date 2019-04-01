@@ -5,6 +5,12 @@ project:
 spring:
    profiles:
       active: dev
+   messages:
+      basename: messages
+   jmx:
+#      enabled: false
+      default-domain: com.bizislife.core
+      unique-names: true
 server:
 #   contextPath: /graphql
    port: 8080

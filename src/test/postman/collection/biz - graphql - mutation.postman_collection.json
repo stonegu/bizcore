@@ -32,6 +32,39 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "new company",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "fr",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"query\":\"mutation {\\n  newCompany(realm: \\\"realm1\\\", prefername: \\\"company1\\\") {\\n    id \\n  }\\n}\"}"
+				},
+				"url": {
+					"raw": "http://{{host}}:{{port}}/graphql",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

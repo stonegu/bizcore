@@ -12,18 +12,18 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @ToString
 @Entity
-public class Author {
+public class TestAuthor {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String firstName;
     private String lastName;
 
-    public Author(Long id) {
+    public TestAuthor(Long id) {
         this.id = id;
     }
 
-    public Author(String firstName, String lastName) {
+    public TestAuthor(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
@@ -31,9 +31,9 @@ public class Author {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Author)) return false;
+        if (!(o instanceof TestAuthor)) return false;
 
-        Author author = (Author) o;
+        TestAuthor author = (TestAuthor) o;
 
         return id != null ? id.equals(author.id) : author.id == null;
     }

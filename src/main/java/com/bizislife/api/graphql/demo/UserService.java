@@ -15,15 +15,15 @@ public class UserService {
     @Autowired
     private UserRepository store;
 
-    public List<User> getAllUsers() {
+    public List<TestUser> getAllUsers() {
         return this.store.findAll();
     }
 
-    public Optional<User> getUser(int id) {
+    public Optional<TestUser> getUser(int id) {
         return this.store.findById(id);
     }
 
-    public List<User> getUsers(int first, int last) {
+    public List<TestUser> getUsers(int first, int last) {
         if (last == 0 || last < first) {
             last = (int)this.store.count();
         }
@@ -32,14 +32,14 @@ public class UserService {
         );
     }
 
-    public User newUser(String login, String name) {
-        User u = new User();
+    public TestUser newUser(String login, String name) {
+        TestUser u = new TestUser();
         u.setLogin(login);
         u.setName(name);
         return this.store.save(u);
     }
 
-    public User saveUser(User user) {
+    public TestUser saveUser(TestUser user) {
         return this.store.save(user);
     }
 
