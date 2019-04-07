@@ -28,13 +28,9 @@ public class CompanyServiceImpl implements CompanyService {
 	
 	@Override
 	public String add(Company company, Locale locale) {
-		if (companyRepository.existsById(company.getId())) {
-			throw new EntityExistsException(messageSource.getMessage("entity.exist", null, locale));
-		} else {
-//			companyRepository.save(company);
-//			return company.getId();
-			throw new EntityExistsException(messageSource.getMessage("entity.exist", null, locale));
-		}
+//		companyRepository.save(company);
+//		return company.getId();
+		throw new EntityExistsException(messageSource.getMessage("entity.exist", null, locale));
 	}
 	
 }

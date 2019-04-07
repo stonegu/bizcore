@@ -92,6 +92,7 @@
               <include>**/application*.yml</include>
               <include>**/**.xml</include>
               <include>**/**.graphqls</include>
+              <include>**/**.properties</include>
            </includes>
         </resource>
      </resources>

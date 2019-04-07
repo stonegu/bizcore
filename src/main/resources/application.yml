@@ -6,7 +6,8 @@ spring:
    profiles:
       active: dev
    messages:
-      basename: messages
+      basename: messages/messages
+      encoding: UTF-8
    jmx:
 #      enabled: false
       default-domain: com.bizislife.core
