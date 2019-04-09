@@ -17,6 +17,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.impl.TextCodec;
 
 public class TokenUtils {
 	public static Claims parseToken(String token) throws AuthenticationException {
@@ -51,7 +52,15 @@ public class TokenUtils {
 	    return claims;
 	}	
 	
-    public static String getTokenWithoutSignature(String encodedToken) {
+	public static Claims parseToken5(String jwt, String secretKey) {
+	    //This line will throw an exception if it is not a signed JWS (as expected)
+	    Claims claims = Jwts.parser()
+	            .setSigningKey(TextCodec.BASE64.decode(secretKey))
+	            .parseClaimsJws(jwt).getBody();
+	    return claims;
+	}	
+
+	public static String getTokenWithoutSignature(String encodedToken) {
         int i = encodedToken.lastIndexOf('.');
         return encodedToken.substring(0, i + 1);
     }
@@ -62,6 +71,25 @@ public class TokenUtils {
     
     
     public static String createJWT(String id, String issuer, String subject, long ttlMillis, String secretKey) {
+    	
+		/*    	
+		    	
+String jws = Jwts.builder()
+  .setIssuer("Stormpath")
+  .setSubject("msilverman")
+  .claim("name", "Micah Silverman")
+  .claim("scope", "admins")
+  // Fri Jun 24 2016 15:33:42 GMT-0400 (EDT)
+  .setIssuedAt(Date.from(Instant.ofEpochSecond(1466796822L)))
+  // Sat Jun 24 2116 15:33:42 GMT-0400 (EDT)
+  .setExpiration(Date.from(Instant.ofEpochSecond(4622470422L)))
+  .signWith(
+    SignatureAlgorithm.HS256,
+    TextCodec.BASE64.decode("Yn2kjibddFAWtnPJ2AFlL8WXmohJMCvigQggaEypa5E=")
+  )
+  .compact();		    	
+		    	
+		*/    	
     	  
         //The JWT signature algorithm we will be using to sign the token
         SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
