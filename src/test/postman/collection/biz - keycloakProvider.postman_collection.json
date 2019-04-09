@@ -155,7 +155,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://{{keycloakHost}}:{{keycloakPort}}/auth/realms/BIZ/rest/users/companies",
+					"raw": "http://{{keycloakHost}}:{{keycloakPort}}/auth/realms/BIZ/rest/companies",
 					"protocol": "http",
 					"host": [
 						"{{keycloakHost}}"
@@ -166,7 +166,6 @@
 						"realms",
 						"BIZ",
 						"rest",
-						"users",
 						"companies"
 					]
 				}

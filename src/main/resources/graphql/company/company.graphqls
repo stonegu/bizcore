@@ -6,5 +6,5 @@ type Company {
 }
 
 type Mutation {
-    newCompany(realm: String!, prefername: String!) : Company!
+    regist(registCode: String!) : String!
 }

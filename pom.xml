@@ -14,6 +14,7 @@
   
   <properties>
      <java.version>1.8</java.version>
+     <io.jsonwebtoken.version>0.9.1</io.jsonwebtoken.version>
   </properties>
 
   <dependencies>
@@ -78,7 +79,13 @@
      <dependency>
          <groupId>org.apache.httpcomponents</groupId>
          <artifactId>httpclient</artifactId>
-     </dependency>     
+     </dependency>   
+     
+		<dependency>
+		    <groupId>io.jsonwebtoken</groupId>
+		    <artifactId>jjwt</artifactId>
+		    <version>${io.jsonwebtoken.version}</version>
+		</dependency>       
      
   </dependencies>
 

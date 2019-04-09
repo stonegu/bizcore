@@ -9,9 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.context.support.MessageSourceResourceBundle;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 
 import com.bizislife.core.dao.ProspectingCompanyRepository;
+import com.bizislife.api.graphql.utils.AuthenUtils;
 import com.bizislife.core.dao.CompanyRepository;
 import com.bizislife.core.dao.pojo.Company;
 import com.bizislife.core.dao.pojo.ProspectingCompany;
@@ -67,5 +70,15 @@ public class CompanyServiceImpl implements CompanyService {
 	public ProspectingCompany getProspectingCompanyById(String id) {
 		return prospectingCompanyRepository.getOne(id);
 	}
+	
+	private String createRealm(String realmId, String realmName) {
+//		HttpHeaders headers = new HttpHeaders();
+//		headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+//		headers.add("Authorization", AuthenUtils.createSecureHeader(keycloakConfig.getResource(), keycloakConfig.getCredentials().getSecret()));
+		
+		
+		return realmId;
+	}
+	
 	
 }
