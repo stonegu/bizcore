@@ -27,6 +27,8 @@ public class AuthenticationFilter implements Filter{
 		log.info("this is filter");
 		
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
+		
+		
 		Enumeration<String> headerNames = httpRequest.getHeaderNames();
 		
 	    if (headerNames != null) {

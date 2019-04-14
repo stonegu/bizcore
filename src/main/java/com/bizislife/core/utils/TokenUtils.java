@@ -32,42 +32,15 @@ public class TokenUtils {
 		}		
 		return Jwts.parser().parseClaimsJwt(getTokenWithoutSignature(extractBearer(token))).getBody();
 	}
-	
-	public static Claims parseToken2(String key, String token) throws AuthenticationException, NoSuchAlgorithmException, NoSuchProviderException, InvalidKeySpecException {
-		if (token == null) {
-			throw new AuthenticationException("token is missing");
-		}
-		PublicKey pkey = getPublicKey(key, "RSA", "BC");
-		return Jwts.parser().setSigningKey(pkey).parseClaimsJwt(getTokenWithoutSignature(extractBearer(token))).getBody();
-	}
-	
-	public static Claims parseToken3(PublicKey key, String token, KeycloakConfig keycloakConfig) throws AuthenticationException {
-		if (token == null) {
-			throw new AuthenticationException("token is missing");
-		}
-		return Jwts.parser().setSigningKey(key)
-				.requireAudience(keycloakConfig.getResource())
-				.requireIssuer(keycloakConfig.getRealm())
-				.parseClaimsJwt(getTokenWithoutSignature(extractBearer(token))).getBody();
 		
-	}
-	
-	public static Claims parseToken4(String jwt, String secretKey) {
-	    //This line will throw an exception if it is not a signed JWS (as expected)
+	@Deprecated
+	public static Claims parseTokenWithKey(String jwt, String secretKey) {
 	    Claims claims = Jwts.parser()
 	            .setSigningKey(DatatypeConverter.parseBase64Binary(secretKey))
-	            .parseClaimsJws(jwt).getBody();
+	            .parseClaimsJwt(getTokenWithoutSignature(extractBearer(jwt))).getBody();
 	    return claims;
 	}	
 	
-	public static Claims parseToken5(String jwt, String secretKey) {
-	    //This line will throw an exception if it is not a signed JWS (as expected)
-	    Claims claims = Jwts.parser()
-	            .setSigningKey(TextCodec.BASE64.decode(secretKey))
-	            .parseClaimsJws(jwt).getBody();
-	    return claims;
-	}	
-
 	public static String getTokenWithoutSignature(String encodedToken) {
         int i = encodedToken.lastIndexOf('.');
         return encodedToken.substring(0, i + 1);
@@ -84,6 +57,7 @@ public class TokenUtils {
         return kf.generatePublic(spec);    }
     
     
+    @Deprecated
     public static String createJWT(String id, String issuer, String subject, long ttlMillis, String secretKey) {
     	
 		/*    	
