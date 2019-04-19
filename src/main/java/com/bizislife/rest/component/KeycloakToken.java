@@ -1,4 +1,4 @@
-package com.bizislife.api.graphql.authentication;
+package com.bizislife.rest.component;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

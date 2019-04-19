@@ -1,4 +1,4 @@
-package com.bizislife.api.graphql.configuration;
+package com.bizislife.configuration;
 
 import lombok.Getter;
 import lombok.Setter;

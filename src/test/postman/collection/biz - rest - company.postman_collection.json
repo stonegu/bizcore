@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "c4ff064e-2d88-448e-b305-d49fef1cfc4a",
-		"name": "biz - graphql - mutation",
+		"_postman_id": "a29d6441-eba6-408c-86eb-6133e7a9f5bf",
+		"name": "biz - rest - company",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -73,45 +73,13 @@
 			"response": []
 		},
 		{
-			"name": "update book pages",
+			"name": "regist company",
 			"request": {
 				"method": "POST",
 				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"query\":\"mutation {\\n  updateBookPageCount(pageCount: 101, id: 1) {\\n    id pageCount\\n  }\\n}\"}"
-				},
-				"url": {
-					"raw": "http://{{host}}:{{port}}/graphql",
-					"protocol": "http",
-					"host": [
-						"{{host}}"
-					],
-					"port": "{{port}}",
-					"path": [
-						"graphql"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "new company",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					},
 					{
 						"key": "Accept-Language",
-						"value": "fr",
+						"value": "en",
 						"type": "text"
 					},
 					{
@@ -122,17 +90,18 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"query\":\"mutation {\\n  regist(registCode: \\\"12345\\\")\\n}\"}"
+					"raw": ""
 				},
 				"url": {
-					"raw": "http://{{host}}:{{port}}/graphql",
+					"raw": "http://{{host}}:{{port}}/company/registrationCode",
 					"protocol": "http",
 					"host": [
 						"{{host}}"
 					],
 					"port": "{{port}}",
 					"path": [
-						"graphql"
+						"company",
+						"registrationCode"
 					]
 				}
 			},

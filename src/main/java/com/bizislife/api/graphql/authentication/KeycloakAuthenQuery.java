@@ -4,6 +4,7 @@ import java.io.UnsupportedEncodingException;
 
 import org.springframework.web.client.RestClientException;
 
+import com.bizislife.rest.component.KeycloakToken;
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 
 public interface KeycloakAuthenQuery extends GraphQLQueryResolver{

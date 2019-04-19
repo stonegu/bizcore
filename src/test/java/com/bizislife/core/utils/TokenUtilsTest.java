@@ -7,7 +7,7 @@ import java.security.spec.InvalidKeySpecException;
 import org.apache.http.auth.AuthenticationException;
 import org.junit.Test;
 
-import com.bizislife.api.graphql.configuration.KeycloakConfig;
+import com.bizislife.configuration.KeycloakConfig;
 
 import io.jsonwebtoken.Claims;
 

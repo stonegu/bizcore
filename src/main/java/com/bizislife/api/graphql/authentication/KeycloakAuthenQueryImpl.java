@@ -16,10 +16,11 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
-import com.bizislife.api.graphql.configuration.KeycloakConfig;
-import com.bizislife.api.graphql.utils.AuthenUtils;
-import com.bizislife.api.graphql.utils.HttpUtils;
-//import com.coxautodev.graphql.tools.GraphQLQueryResolver;
+import com.bizislife.configuration.KeycloakConfig;
+import com.bizislife.rest.component.KeycloakToken;
+import com.bizislife.rest.component.KeycloakTokenFull;
+import com.bizislife.rest.utils.AuthenUtils;
+import com.bizislife.rest.utils.HttpUtils;
 
 @Component
 public class KeycloakAuthenQueryImpl implements KeycloakAuthenQuery {

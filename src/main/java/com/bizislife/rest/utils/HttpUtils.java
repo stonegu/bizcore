@@ -1,4 +1,4 @@
-package com.bizislife.api.graphql.utils;
+package com.bizislife.rest.utils;
 
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.impl.client.CloseableHttpClient;

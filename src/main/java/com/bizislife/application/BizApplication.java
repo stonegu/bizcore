@@ -1,8 +1,9 @@
-package com.bizislife.api.graphql;
+package com.bizislife.application;
 
-import com.bizislife.api.graphql.configuration.JDBCConfig;
-import com.bizislife.api.graphql.configuration.KeycloakConfig;
-import com.bizislife.api.graphql.configuration.YAMLBaseConfig;
+import com.bizislife.configuration.JDBCConfig;
+import com.bizislife.configuration.KeycloakConfig;
+import com.bizislife.configuration.YAMLBaseConfig;
+import com.bizislife.core.filter.AuthenticationFilter;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -13,6 +14,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -23,15 +25,16 @@ import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.LocaleResolver;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
-@ComponentScan(basePackages = {"com.bizislife.core", "com.bizislife.api"})
-@EntityScan(basePackages = {"com.bizislife.core", "com.bizislife.api"})
-@EnableJpaRepositories(basePackages = {"com.bizislife.core", "com.bizislife.api"})
+@ComponentScan(basePackages = {"com.bizislife.core", "com.bizislife.api", "com.bizislife.rest", "com.bizislife.configuration"})
+@EntityScan(basePackages = {"com.bizislife.core", "com.bizislife.api", "com.bizislife.rest"})
+@EnableJpaRepositories(basePackages = {"com.bizislife.core", "com.bizislife.api", "com.bizislife.rest"})
 @SpringBootApplication
 @Slf4j
-public class GraphqlApplication implements CommandLineRunner{
+public class BizApplication implements CommandLineRunner{
 	
 	@Autowired
 	private YAMLBaseConfig yamlBaseConfig;
@@ -43,7 +46,7 @@ public class GraphqlApplication implements CommandLineRunner{
 	private KeycloakConfig keycloakConfig;
 	
 	public static void main(String[] args) {
-		SpringApplication.run(GraphqlApplication.class, args);
+		SpringApplication.run(BizApplication.class, args);
 	}
 
 	@Override
@@ -60,6 +63,15 @@ public class GraphqlApplication implements CommandLineRunner{
 		System.out.println("secret: " + keycloakConfig.getCredentials().getSecret());
 	}
 	
+	@Bean
+	public FilterRegistrationBean<AuthenticationFilter> autheticationFilter() {
+		FilterRegistrationBean<AuthenticationFilter> filterRegistrationBean = new FilterRegistrationBean<>();
+		filterRegistrationBean.setFilter(new AuthenticationFilter());
+		filterRegistrationBean.addUrlPatterns("/graphql/*");
+		filterRegistrationBean.setOrder(1);
+		return filterRegistrationBean;
+	}
+		
 //	@Bean
 //	public LocaleResolver localeResolver() {
 //		AcceptHeaderLocaleResolver localeResolver = new AcceptHeaderLocaleResolver();

@@ -14,11 +14,11 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 
 import com.bizislife.core.dao.ProspectingCompanyRepository;
-import com.bizislife.api.graphql.utils.AuthenUtils;
 import com.bizislife.core.dao.CompanyRepository;
 import com.bizislife.core.dao.pojo.Company;
 import com.bizislife.core.dao.pojo.ProspectingCompany;
 import com.bizislife.core.service.CompanyService;
+import com.bizislife.rest.utils.AuthenUtils;
 
 import lombok.RequiredArgsConstructor;
 

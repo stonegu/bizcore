@@ -17,7 +17,7 @@ import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.auth.AuthenticationException;
 
-import com.bizislife.api.graphql.configuration.KeycloakConfig;
+import com.bizislife.configuration.KeycloakConfig;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;

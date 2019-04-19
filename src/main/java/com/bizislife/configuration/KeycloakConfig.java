@@ -1,4 +1,4 @@
-package com.bizislife.api.graphql.configuration;
+package com.bizislife.configuration;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;

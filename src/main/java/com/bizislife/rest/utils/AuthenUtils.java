@@ -1,4 +1,4 @@
-package com.bizislife.api.graphql.utils;
+package com.bizislife.rest.utils;
 
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
