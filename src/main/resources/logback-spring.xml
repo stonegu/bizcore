@@ -35,12 +35,20 @@
 
    <!-- Logging level can be one of one of TRACE, DEBUG, INFO, WARN, ERROR, FATAL, OFF. -->
 
-   <logger name="org.springframework.jdbc" level="INFO" additivity="false">
+   <logger name="org.springframework" level="DEBUG" additivity="false">
       <appender-ref ref="STDOUT"/>
       <appender-ref ref="FILE"/>
    </logger>
 
-   <logger name="com.bizislife.core.graphql" level="WARN" additivity="false">
+   <logger name="com.bizislife.configuration" level="WARN" additivity="false">
+      <appender-ref ref="STDOUT"/>
+      <appender-ref ref="FILE"/>
+   </logger>
+   <logger name="com.bizislife.rest" level="WARN" additivity="false">
+      <appender-ref ref="STDOUT"/>
+      <appender-ref ref="FILE"/>
+   </logger>
+   <logger name="com.bizislife.core" level="WARN" additivity="false">
       <appender-ref ref="STDOUT"/>
       <appender-ref ref="FILE"/>
    </logger>

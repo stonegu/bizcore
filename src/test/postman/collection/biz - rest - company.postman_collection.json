@@ -93,13 +93,14 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://{{host}}:{{port}}/company/registrationCode",
+					"raw": "http://{{host}}:{{port}}/api/company/registrationCode",
 					"protocol": "http",
 					"host": [
 						"{{host}}"
 					],
 					"port": "{{port}}",
 					"path": [
+						"api",
 						"company",
 						"registrationCode"
 					]

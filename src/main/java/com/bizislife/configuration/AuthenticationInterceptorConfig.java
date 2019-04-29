@@ -16,7 +16,7 @@ public class AuthenticationInterceptorConfig implements WebMvcConfigurer{
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(authenticationInterceptor)
-			.addPathPatterns("/graphql/**");
+			.addPathPatterns("/company/**", "/user/**");
 	}
 
 }

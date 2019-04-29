@@ -27,7 +27,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Basic YWNjb3VudDo1NGU3YzRiZC03ZjFmLTQ2ZjQtYWVhMi01NGJmZDUwZDMwYmQ="
+						"value": "Basic TU9CSUxFOjJmMWFmNmY4LTAzYWMtNDdlZi1iNzgxLTVmY2E4ZDQwMzI1ZQ=="
 					}
 				],
 				"body": {
@@ -215,6 +215,33 @@
 						"admin",
 						"realms",
 						"BIZ"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get keycloak configuration",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://{{keycloakHost}}:{{keycloakPort}}/auth/realms/BIZ/.well-known/openid-configuration",
+					"protocol": "http",
+					"host": [
+						"{{keycloakHost}}"
+					],
+					"port": "{{keycloakPort}}",
+					"path": [
+						"auth",
+						"realms",
+						"BIZ",
+						".well-known",
+						"openid-configuration"
 					]
 				}
 			},

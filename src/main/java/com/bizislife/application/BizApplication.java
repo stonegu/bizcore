@@ -28,10 +28,12 @@ import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
+import org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration;
 
 @ComponentScan(basePackages = {"com.bizislife.core", "com.bizislife.api", "com.bizislife.rest", "com.bizislife.configuration"})
-@EntityScan(basePackages = {"com.bizislife.core", "com.bizislife.api", "com.bizislife.rest"})
-@EnableJpaRepositories(basePackages = {"com.bizislife.core", "com.bizislife.api", "com.bizislife.rest"})
+@EntityScan(basePackages = {"com.bizislife.core", "com.bizislife.api", "com.bizislife.rest", "com.bizislife.configuration"})
+@EnableJpaRepositories(basePackages = {"com.bizislife.core", "com.bizislife.api", "com.bizislife.rest", "com.bizislife.configuration"})
 @SpringBootApplication
 @Slf4j
 public class BizApplication implements CommandLineRunner{
@@ -58,16 +60,16 @@ public class BizApplication implements CommandLineRunner{
 		System.out.println("project version : " + yamlBaseConfig.getVersion());
 		System.out.println("url : " + jdbcConfig.getUrl());
 		System.out.println("driver: " + jdbcConfig.getDriverClassName());
-		System.out.println("realm: " + keycloakConfig.getRealm());
-		System.out.println("auth-server-url: " + keycloakConfig.getAuthServerUrl());
-		System.out.println("secret: " + keycloakConfig.getCredentials().getSecret());
+//		System.out.println("realm: " + keycloakConfig.getRealm());
+//		System.out.println("auth-server-url: " + keycloakConfig.getAuthServerUrl());
+//		System.out.println("secret: " + keycloakConfig.getCredentials().getSecret());
 	}
 	
 	@Bean
 	public FilterRegistrationBean<AuthenticationFilter> autheticationFilter() {
 		FilterRegistrationBean<AuthenticationFilter> filterRegistrationBean = new FilterRegistrationBean<>();
 		filterRegistrationBean.setFilter(new AuthenticationFilter());
-		filterRegistrationBean.addUrlPatterns("/graphql/*");
+		filterRegistrationBean.addUrlPatterns("/api/*");
 		filterRegistrationBean.setOrder(1);
 		return filterRegistrationBean;
 	}

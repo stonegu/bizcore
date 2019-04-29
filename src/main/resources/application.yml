@@ -12,6 +12,9 @@ spring:
 #      enabled: false
       default-domain: com.bizislife.core
       unique-names: true
+   mvc:
+      servlet:
+         path: /api
 server:
 #   contextPath: /graphql
    port: 8080
@@ -21,24 +24,24 @@ clientHttp:
 spring.profiles: default
 spring:
    profiles:
-      include: jdbc,keycloak
-logging:
-   file: C:/Projects/bizMobile/logs/graphql_default.log
-   archived: C:/Projects/bizMobile/logs/archived/graphql_default-%d{yyyy-MM-dd}.%i.log
+      include: jdbc,oauth2
+#logging:
+#   file: C:/Projects/bizMobile/logs/graphql_default.log
+#   archived: C:/Projects/bizMobile/logs/archived/graphql_default-%d{yyyy-MM-dd}.%i.log
 ---
 spring.profiles: dev
 spring:
    profiles:
-      include: jdbc-dev,keycloak-dev
-logging:
-   file: C:/Projects/bizMobile/logs/graphql_dev.log
-   archived: C:/Projects/bizMobile/logs/archived/graphql_dev-%d{yyyy-MM-dd}.%i.log
+      include: jdbc-dev,oauth2-dev
+#logging:
+#   file: C:/Projects/bizMobile/logs/graphql_dev.log
+#   archived: C:/Projects/bizMobile/logs/archived/graphql_dev-%d{yyyy-MM-dd}.%i.log
 ---
 spring.profiles: qa
 spring:
    profiles:
-      include: jdbc-qa,keycloak-qa
-logging:
-   file: C:/Projects/bizMobile/logs/graphql_qa.log
-   archived: C:/Projects/bizMobile/logs/archived/graphql_qa-%d{yyyy-MM-dd}.%i.log
+      include: jdbc-qa,oauth2-qa
+#logging:
+#   file: C:/Projects/bizMobile/logs/graphql_qa.log
+#   archived: C:/Projects/bizMobile/logs/archived/graphql_qa-%d{yyyy-MM-dd}.%i.log
    

@@ -1,0 +1,43 @@
+rest:
+   security:
+      enabled: true
+      api-matcher: /api/**
+      cors:
+         allowed-origins: '*'
+         allowed-headers: '*'
+         allowed-methods: GET,POST,PUT,PATCH,DELETE,OPTIONS
+         max-age: 3600
+#      issuer-uri: http://localhost:8081/auth/realms/BIZ
+#security:
+#   oauth2:
+#      BIZ:
+#         resource:
+#            id: MOBILE
+#            token-info-uri: http://localhost:8081/auth/realms/BIZ/protocol/openid-connect/token/introspect
+#            user-info-uri: http://localhost:8081/auth/realms/BIZ/protocol/openid-connect/userinfo
+#            jwt:
+#               key-value: "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAiKFlSJb4o03aA+fj9PF+Rh+U0tsZxDtYTRmC31HWbHcsIhUfIFKgdhpOpVBURveUKJOd88e9l+E0pSYMhjEwBKatKB+llixI3MQB48t4gx62cIGEPNKlMTP2/+z9s1jdHZWyzTYF3uzIdU7KDUmjVeKAA3UZNoKR794VY0H8emNkF/so0ufthCm/aK3uMVQslRoKGo3caqvX3cuL7Ct+zwl/9oO5VGkUdRzB40Jzakzntf2BIZOTf0II6OOuhZC9Rll2+A7jeR6tA/7+X/JYEMa+HxpXmKJ/jy3GnVGv1l8qh9Hc48ulHNqJofDLFVfzrHlpHJsLSWGDRxTQOJhEgQIDAQAB\n-----END PUBLIC KEY-----"
+#         client:
+#            client-id: MOBILE
+#            client-secret: 2f1af6f8-03ac-47ef-b781-5fca8d40325e
+#            user-authorization-uri: http://localhost:8081/auth/realms/BIZ/protocol/openid-connect/auth
+#            access-token-uri: http://localhost:8081/auth/realms/BIZ/protocol/openid-connect/token
+#            scope: openid
+#            grant-type: client_credentials
+
+security:
+   oauth2:
+      resource:
+         id: MOBILE
+         token-info-uri: http://localhost:8081/auth/realms/BIZ/protocol/openid-connect/token/introspect
+         user-info-uri: http://localhost:8081/auth/realms/BIZ/protocol/openid-connect/userinfo
+         jwt:
+            key-value: "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAiKFlSJb4o03aA+fj9PF+Rh+U0tsZxDtYTRmC31HWbHcsIhUfIFKgdhpOpVBURveUKJOd88e9l+E0pSYMhjEwBKatKB+llixI3MQB48t4gx62cIGEPNKlMTP2/+z9s1jdHZWyzTYF3uzIdU7KDUmjVeKAA3UZNoKR794VY0H8emNkF/so0ufthCm/aK3uMVQslRoKGo3caqvX3cuL7Ct+zwl/9oO5VGkUdRzB40Jzakzntf2BIZOTf0II6OOuhZC9Rll2+A7jeR6tA/7+X/JYEMa+HxpXmKJ/jy3GnVGv1l8qh9Hc48ulHNqJofDLFVfzrHlpHJsLSWGDRxTQOJhEgQIDAQAB\n-----END PUBLIC KEY-----"
+      client:
+         client-id: MOBILE
+         client-secret: 2f1af6f8-03ac-47ef-b781-5fca8d40325e
+         user-authorization-uri: http://localhost:8081/auth/realms/BIZ/protocol/openid-connect/auth
+         access-token-uri: http://localhost:8081/auth/realms/BIZ/protocol/openid-connect/token
+         scope: openid
+         grant-type: client_credentials
+                     

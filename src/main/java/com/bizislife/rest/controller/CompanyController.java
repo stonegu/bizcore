@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 
 
@@ -37,6 +38,7 @@ class CompanyController {
 	@ResponseStatus(HttpStatus.CREATED)
 	@BizAccess
 	@GuestAccess
+	@PreAuthorize("hasAnyAuthority('ROLE_USER')")	
 	public String regist(@PathVariable String registCode) {
 		Locale locale = LocaleContextHolder.getLocale();
 		String companyId = companyService.register(registCode, locale);
